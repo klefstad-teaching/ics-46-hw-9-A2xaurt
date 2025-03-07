@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.20)
 
 project(HW9 CXX)
 
+add_compile_options("-fsanitize=address,undefined")
+link_libraries("-fsanitize=address,undefined")
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
