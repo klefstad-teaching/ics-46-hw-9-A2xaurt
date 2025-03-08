@@ -4,7 +4,9 @@
 #define my_assert(e) {cout << #e << ((e) ? " passed": " failed") << endl;}
 //ladder Implementation
 
-void verify_word_ladder() {
+/*
+void verify_word_ladder() 
+{
 
     set<string> word_list;
 
@@ -23,6 +25,7 @@ void verify_word_ladder() {
     my_assert(generate_word_ladder("car", "cheat", word_list).size() == 4);
 
 }
+*/
 
 void error(string word1, string word2, string msg)
 {

@@ -7,10 +7,14 @@ output:
 	g++ $(CXXFLAGS) src/dijkstras_main.cpp src/dijkstras.cpp src/ladder_main.cpp src/ladder.cpp -o main
 	./main > output.txt
 	/bin/rm main
-full:
-	g++ $(CXXFLAGS) src/dijkstras_main.cpp src/dijkstras.cpp src/ladder_main.cpp src/ladder.cpp -o main
+fullLadder:
+	g++ $(CXXFLAGS) src/ladder_main.cpp src/ladder.cpp -o main
 	./main
 	/bin/rm main
+fullDijkstras:
+	g++ $(CXXFLAGS) src/dijkstras_main.cpp src/dijkstras.cpp -o main
+	./main
+	/bin/rm main 
 build:
 	cmake -B build -S .
 gtests:
