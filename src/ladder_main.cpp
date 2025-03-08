@@ -9,6 +9,5 @@ int main()
     cin>>start;
     cout<<"Enter target word: "<<endl;
     cin>>target;
-    cout<<"Start: "<<start<<endl;
-    cout<<"Target: "<<target<<endl;
+
 }

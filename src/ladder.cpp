@@ -29,5 +29,16 @@ void verify_word_ladder()
 
 void error(string word1, string word2, string msg)
 {
-    cout<<"Error: "<<word1<<msg<<word2;
+    cout<<"Error: "<<word1<<msg<<word2<<endl;
+}
+
+void load_words(set<string> &word_list, const string &file_name)
+{
+    word_list.clear();
+    ifstream in{file_name};
+    if (in)
+        for (string word; in >> word; )
+            word_list.insert(word);
+    else
+        error("",file_name,"Unable to find input file at file name- ");
 }
