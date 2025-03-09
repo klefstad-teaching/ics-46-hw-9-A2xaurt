@@ -4,13 +4,12 @@
 #define my_assert(e) {cout << #e << ((e) ? " passed": " failed") << endl;}
 //ladder Implementation
 
-/*
 void verify_word_ladder() 
 {
 
     set<string> word_list;
 
-    load_words(word_list, "words.txt");
+    load_words(word_list, "src/words.txt");
 
     my_assert(generate_word_ladder("cat", "dog", word_list).size() == 4);
 
@@ -25,7 +24,6 @@ void verify_word_ladder()
     my_assert(generate_word_ladder("car", "cheat", word_list).size() == 4);
 
 }
-*/
 
 void error(string word1, string word2, string msg)
 {
@@ -61,8 +59,8 @@ bool edit_distance_within(const std::string &str1, const std::string &str2, int 
 {
     int size1=str1.size();
     int size2=str2.size();
-    int previousDistances[size2+1];
-    int currentDistances[size2+1];
+    int* previousDistances=new int[size2+1];
+    int* currentDistances=new int[size2+1];
 
     for(int i=0; i<=size2; ++i)
         previousDistances[i]=i;
@@ -81,7 +79,11 @@ bool edit_distance_within(const std::string &str1, const std::string &str2, int 
         }
         swap_ranges(previousDistances,previousDistances+size2+1,currentDistances);
     }
-    return previousDistances[size2]<=d;
+    
+    bool result=previousDistances[size2]<=d;
+    delete[] previousDistances;
+    delete[] currentDistances;
+    return result;
 }
 
 bool is_adjacent(const string &word1, const string &word2)
@@ -102,17 +104,14 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
         string last_word=ladder[ladder.size()-1];
         for(string word : word_list)
         {
-            if(is_adjacent(last_word,word))
+            if(is_adjacent(last_word,word)&&!visited.contains(word))
             {
-                if(!visited.contains(word))
-                {
-                    visited.insert(word);
-                    vector<string> new_ladder=ladder;
-                    new_ladder.push_back(word);
-                    if(word==end_word)
-                        return new_ladder;
-                    ladder_queue.push(new_ladder);
-                }
+                visited.insert(word);
+                vector<string> new_ladder=ladder;
+                new_ladder.push_back(word);
+                if(word==end_word)
+                    return new_ladder;
+                ladder_queue.push(new_ladder);
             }
         }
     }

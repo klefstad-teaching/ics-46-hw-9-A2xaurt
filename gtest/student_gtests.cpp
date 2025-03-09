@@ -1,5 +1,5 @@
+//student_gtests.cpp
 #include <gtest/gtest.h>
-
 #include "dijkstras.h"
 #include "ladder.h"
 
@@ -46,7 +46,7 @@ TEST(Ladder, print)
   EXPECT_EQ("No path found!\n",captureResults());
 }
 
-TEST(Ladder, EditDistance)
+TEST(Ladder, editDistance)
 {
   EXPECT_TRUE(edit_distance_within(string("cat"), string("cart"), 1));
   EXPECT_TRUE(edit_distance_within(string("cat"), string("carti"), 2));
@@ -81,4 +81,20 @@ TEST(Ladder,generateWordLadder)
   EXPECT_EQ(4,ladder.size());
   vector<string> empty=generate_word_ladder("car", "bat",{"car","bat","run"});
   EXPECT_TRUE(empty.empty());
+}
+
+
+TEST(Dijkstras, print)
+{
+  beginCapture();
+  print_path({0,3,1,2},6);
+  EXPECT_EQ("0 3 1 2 \nTotal cost is 6\n",captureResults());
+
+  beginCapture();
+  print_path({0,3,1},1);
+  EXPECT_EQ("0 3 1 \nTotal cost is 1\n",captureResults());
+
+  beginCapture();
+  print_path({0},0);
+  EXPECT_EQ("0 \nTotal cost is 0\n",captureResults());
 }
