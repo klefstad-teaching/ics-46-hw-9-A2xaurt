@@ -83,7 +83,6 @@ TEST(Ladder,generateWordLadder)
   EXPECT_TRUE(empty.empty());
 }
 
-
 TEST(Dijkstras, print)
 {
   beginCapture();
@@ -97,4 +96,16 @@ TEST(Dijkstras, print)
   beginCapture();
   print_path({0},0);
   EXPECT_EQ("0 \nTotal cost is 0\n",captureResults());
+}
+
+TEST(Dijkstras, Dijkstras)
+{
+  Graph G;
+  vector<int> previous{0,0,0,0};
+  file_to_graph("src/small.txt", G);
+  vector<int> result=dijkstra_shortest_path(G,0,previous);
+  EXPECT_EQ(0,result[0]);
+  EXPECT_EQ(3,result[1]);
+  EXPECT_EQ(6,result[2]);
+  EXPECT_EQ(1,result[3]);
 }
