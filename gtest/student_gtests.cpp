@@ -55,3 +55,14 @@ TEST(Ladder, EditDistance)
   EXPECT_TRUE(edit_distance_within(string("cat"), string("barn"), 3));
   EXPECT_TRUE(edit_distance_within(string("timtim"), string("tomtomtim"), 4));
 }
+
+TEST(Ladder,isAdjacent)
+{
+  EXPECT_TRUE(is_adjacent(string("cat"), string("bat")));
+  EXPECT_TRUE(is_adjacent(string("cat"), string("rat")));
+  EXPECT_TRUE(is_adjacent(string("cat"), string("sat")));
+  EXPECT_FALSE(is_adjacent(string("cat"), string("brat")));
+  EXPECT_FALSE(is_adjacent(string("cat"), string("rats")));
+  EXPECT_FALSE(is_adjacent(string("cat"), string("sate")));
+  EXPECT_FALSE(is_adjacent(string("cat"), string("carts")));
+}
