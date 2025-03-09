@@ -51,3 +51,30 @@ void print_word_ladder(const vector<string> &ladder)
         cout<<ladder[i]<<" -> ";
     cout<<ladder[size-1]<<endl;
 }
+
+bool edit_distance_within(const std::string &str1, const std::string &str2, int d)
+{
+    int size1=str1.size();
+    int size2=str2.size();
+    int previousDistances[size2+1];
+    int currentDistances[size2+1];
+
+    for(int i=0; i<=size2; ++i)
+        previousDistances[i]=i;
+
+    for(int i=0; i<size1; ++i)
+    {
+        currentDistances[0]=i+1;
+        for(int a=0; a<size2; ++a)
+        {
+            int deletionCost=previousDistances[a+1]+1;
+            int insertionCost=currentDistances[a]+1;
+            int substitutionCost=previousDistances[a];
+            if(str1[i]!=str2[a])
+                ++substitutionCost;
+            currentDistances[a+1]=min(deletionCost,min(insertionCost,substitutionCost));
+        }
+        swap_ranges(previousDistances,previousDistances+size2+1,currentDistances);
+    }
+    return previousDistances[size2]<=d;
+}

@@ -41,3 +41,17 @@ TEST(Ladder, print)
   print_word_ladder(vector<string>{"cat","cot"});
   EXPECT_EQ("Size: 2\ncat -> cot\n",captureResults());
 }
+
+TEST(Ladder, EditDistance)
+{
+  EXPECT_TRUE(edit_distance_within(string("cat"), string("cart"), 1));
+  EXPECT_TRUE(edit_distance_within(string("cat"), string("carti"), 2));
+  EXPECT_TRUE(edit_distance_within(string("cat"), string("carti"), 3));
+  EXPECT_TRUE(edit_distance_within(string("cat"), string("ca"), 1));
+  EXPECT_FALSE(edit_distance_within(string("cat"),string("carti"),1));
+  EXPECT_TRUE(edit_distance_within(string("TimTim"), string("TomTomTim"), 5));
+  EXPECT_TRUE(edit_distance_within(string("TimTim"), string("TomTom"), 2));
+  EXPECT_TRUE(edit_distance_within(string("Tim"), string("TomTom"), 4));
+  EXPECT_TRUE(edit_distance_within(string("cat"), string("barn"), 3));
+  EXPECT_TRUE(edit_distance_within(string("timtim"), string("tomtomtim"), 4));
+}
