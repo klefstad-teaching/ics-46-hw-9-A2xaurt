@@ -30,3 +30,14 @@ TEST(Ladder, loadWords)
   load_words(words, "src/small.txt");
   EXPECT_EQ(7,words.size());
 }
+
+TEST(Ladder, print)
+{
+  beginCapture();
+  print_word_ladder(vector<string>{"cat","cot","cog","bog","bag","bat"});
+  EXPECT_EQ("Size: 6\ncat -> cot -> cog -> bog -> bag -> bat\n",captureResults());
+
+  beginCapture();
+  print_word_ladder(vector<string>{"cat","cot"});
+  EXPECT_EQ("Size: 2\ncat -> cot\n",captureResults());
+}

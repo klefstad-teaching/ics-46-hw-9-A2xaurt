@@ -42,3 +42,12 @@ void load_words(set<string> &word_list, const string &file_name)
     else
         error("",file_name,"Unable to find input file at file name- ");
 }
+
+void print_word_ladder(const vector<string> &ladder)
+{
+    int size=ladder.size();
+    cout<<"Size: "<<size<<endl;
+    for(int i=0; i<size-1; ++i)
+        cout<<ladder[i]<<" -> ";
+    cout<<ladder[size-1]<<endl;
+}
