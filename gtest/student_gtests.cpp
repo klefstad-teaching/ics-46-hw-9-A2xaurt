@@ -40,6 +40,10 @@ TEST(Ladder, print)
   beginCapture();
   print_word_ladder(vector<string>{"cat","cot"});
   EXPECT_EQ("Size: 2\ncat -> cot\n",captureResults());
+
+  beginCapture();
+  print_word_ladder({});
+  EXPECT_EQ("No path found!\n",captureResults());
 }
 
 TEST(Ladder, EditDistance)
@@ -65,4 +69,14 @@ TEST(Ladder,isAdjacent)
   EXPECT_FALSE(is_adjacent(string("cat"), string("rats")));
   EXPECT_FALSE(is_adjacent(string("cat"), string("sate")));
   EXPECT_FALSE(is_adjacent(string("cat"), string("carts")));
+}
+
+TEST(Ladder,generateWordLadder)
+{
+  vector<string> ladder=generate_word_ladder("car", "cheat", {"cheat","cat","rat","chat","char","car","cog","dog"});
+  EXPECT_EQ("car",ladder[0]);
+  EXPECT_EQ("cat",ladder[1]);
+  EXPECT_EQ("chat",ladder[2]);
+  EXPECT_EQ("cheat",ladder[3]);
+  EXPECT_EQ(4,ladder.size());
 }
