@@ -93,25 +93,28 @@ bool is_adjacent(const string &word1, const string &word2)
 
 vector<string> generate_word_ladder(const string &begin_word, const string &end_word, const set<string> &word_list)
 {
-    queue<vector<string>> ladder_queue;
-    ladder_queue.push({begin_word});
-    set<string> visited;
-    visited.insert(begin_word);
-    while(!ladder_queue.empty())
+    if(begin_word!=end_word&&word_list.contains(end_word))
     {
-        vector<string> ladder=ladder_queue.front();
-        ladder_queue.pop();
-        string last_word=ladder.back();
-        for(string word : word_list)
+        queue<vector<string>> ladder_queue;
+        ladder_queue.push({begin_word});
+        set<string> visited;
+        visited.insert(begin_word);
+        while(!ladder_queue.empty())
         {
-            if(is_adjacent(last_word,word)&&!visited.contains(word))
+            vector<string> ladder=ladder_queue.front();
+            ladder_queue.pop();
+            string last_word=ladder.back();
+            for(string word : word_list)
             {
-                visited.insert(word);
-                vector<string> new_ladder=ladder;
-                new_ladder.push_back(word);
-                if(word==end_word)
-                    return new_ladder;
-                ladder_queue.push(new_ladder);
+                if(is_adjacent(last_word,word)&&!visited.contains(word))
+                {
+                    visited.insert(word);
+                    vector<string> new_ladder=ladder;
+                    new_ladder.push_back(word);
+                    if(word==end_word)
+                        return new_ladder;
+                    ladder_queue.push(new_ladder);
+                }
             }
         }
     }
