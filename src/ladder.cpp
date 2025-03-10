@@ -98,8 +98,6 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
     set<string> visited;
     visited.insert(begin_word);
 
-    map<string,set<string>> nonAdjacencies;
-
     while(!ladder_queue.empty())
     {
         vector<string> ladder=ladder_queue.front();
@@ -107,8 +105,6 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
         string last_word=ladder.back();
         for(string word : word_list)
         {
-            if(!nonAdjacencies[last_word].contains(word))
-            {
                 if(is_adjacent(last_word,word))
                 {
                     if(!visited.contains(word))
@@ -121,9 +117,6 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
                         ladder_queue.push(new_ladder);
                     }
                 }
-                else
-                    nonAdjacencies[last_word].insert(word);
-            }
         }
     }
 

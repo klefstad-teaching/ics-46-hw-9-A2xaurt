@@ -383,6 +383,7 @@ CMakeFiles/student_gtests.dir/gtest/gtestmain.cpp.o: /home/atruax/ICS46/HW9/gtes
 CMakeFiles/student_gtests.dir/gtest/student_gtests.cpp.o: /home/atruax/ICS46/HW9/gtest/student_gtests.cpp \
   /home/atruax/ICS46/HW9/src/dijkstras.h \
   /home/atruax/ICS46/HW9/src/ladder.h \
+  /home/atruax/ICS46/HW9/src/timer.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -686,6 +687,7 @@ CMakeFiles/student_gtests.dir/gtest/student_gtests.cpp.o: /home/atruax/ICS46/HW9
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/x86_64-linux-gnu/bits/resource.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/semaphore.h \
@@ -745,6 +747,7 @@ CMakeFiles/student_gtests.dir/gtest/student_gtests.cpp.o: /home/atruax/ICS46/HW9
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_rusage.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_statx.h \
@@ -784,6 +787,7 @@ CMakeFiles/student_gtests.dir/gtest/student_gtests.cpp.o: /home/atruax/ICS46/HW9
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/sys/resource.h \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/stat.h \
@@ -1275,6 +1279,8 @@ CMakeFiles/student_gtests.dir/src/ladder.cpp.o: /home/atruax/ICS46/HW9/src/ladde
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h:
 
+/usr/include/x86_64-linux-gnu/bits/resource.h:
+
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
@@ -1318,6 +1324,8 @@ CMakeFiles/student_gtests.dir/src/ladder.cpp.o: /home/atruax/ICS46/HW9/src/ladde
 /usr/include/c++/13/bits/deque.tcc:
 
 /usr/include/c++/13/algorithm:
+
+/home/atruax/ICS46/HW9/src/timer.h:
 
 /home/atruax/ICS46/HW9/src/ladder.h:
 
@@ -1446,6 +1454,8 @@ CMakeFiles/student_gtests.dir/src/ladder.cpp.o: /home/atruax/ICS46/HW9/src/ladde
 /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/ss_flags.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_rusage.h:
 
 /usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
@@ -1596,6 +1606,8 @@ CMakeFiles/student_gtests.dir/src/ladder.cpp.o: /home/atruax/ICS46/HW9/src/ladde
 /usr/include/c++/13/bits/std_mutex.h:
 
 /usr/include/c++/13/bits/stl_construct.h:
+
+/usr/include/x86_64-linux-gnu/sys/resource.h:
 
 /usr/include/c++/13/tr1/hypergeometric.tcc:
 

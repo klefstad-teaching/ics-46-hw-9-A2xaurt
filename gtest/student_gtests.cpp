@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 #include "dijkstras.h"
 #include "ladder.h"
+#include "timer.h"
 
 //A helper to begin taking in output
 void beginCapture()
@@ -123,4 +124,16 @@ TEST(Dijkstras, Extract)
   EXPECT_EQ(2,path[3]);
   EXPECT_EQ(4,path.size());
   
+}
+
+TEST(LadderGeneration,speed)
+{
+  Timer t;
+  double eTime;
+  set<string> words;
+  load_words(words,"src/words.txt");
+  t.start();
+  generate_word_ladder("cat","cog",words);
+  t.elapsedUserTime(eTime);
+  cout<<"Time: "<<eTime<<endl;
 }
