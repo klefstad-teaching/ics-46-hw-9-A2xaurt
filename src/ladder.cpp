@@ -99,8 +99,6 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
     visited.insert(begin_word);
 
     map<string,set<string>> nonAdjacencies;
-    for(string word : word_list)
-        nonAdjacencies[word]={};
 
     while(!ladder_queue.empty())
     {
