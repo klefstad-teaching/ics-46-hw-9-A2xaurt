@@ -45,13 +45,13 @@ void print_word_ladder(const vector<string> &ladder)
 {
     int size=ladder.size();
     if(size==0)
-        cout<<"No path found!"<<endl;
+        cout<<"No word ladder found."<<endl;
     else
     {
-        cout<<"Size: "<<size<<endl;
-        for(int i=0; i<size-1; ++i)
-            cout<<ladder[i]<<" -> ";
-        cout<<ladder[size-1]<<endl;
+        cout<<"Word ladder found: ";
+        for(int i=0; i<size; ++i)
+            cout<<ladder[i]<<' ';
+        cout<<endl;
     }
 }
 

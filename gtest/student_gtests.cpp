@@ -35,15 +35,15 @@ TEST(Ladder, print)
 {
   beginCapture();
   print_word_ladder(vector<string>{"cat","cot","cog","bog","bag","bat"});
-  EXPECT_EQ("Size: 6\ncat -> cot -> cog -> bog -> bag -> bat\n",captureResults());
+  EXPECT_EQ("Word ladder found: cat cot cog bog bag bat \n",captureResults());
 
   beginCapture();
   print_word_ladder(vector<string>{"cat","cot"});
-  EXPECT_EQ("Size: 2\ncat -> cot\n",captureResults());
+  EXPECT_EQ("Word ladder found: cat cot \n",captureResults());
 
   beginCapture();
   print_word_ladder({});
-  EXPECT_EQ("No path found!\n",captureResults());
+  EXPECT_EQ("No word ladder found.\n",captureResults());
 }
 
 TEST(Ladder, editDistance)
@@ -108,7 +108,6 @@ TEST(Dijkstras, Dijkstras)
   EXPECT_EQ(3,result[1]);
   EXPECT_EQ(6,result[2]);
   EXPECT_EQ(1,result[3]);
-  print_path(previous,5);
 }
 
 TEST(Dijkstras, Extract)
