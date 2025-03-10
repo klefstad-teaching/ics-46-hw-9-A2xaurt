@@ -95,12 +95,12 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
 {
     queue<vector<string>> ladder_queue;
     ladder_queue.push({begin_word});
+    set<string> visited;
+    visited.insert(begin_word);
 
-
-    map<string,bool> visited;
-    for(string word:word_list)
-        visited[word]=false;
-    visited[begin_word]=true;
+    map<string,set<string>> nonAdjacencies;
+    for(string word : word_list)
+        nonAdjacencies[word]={};
 
     while(!ladder_queue.empty())
     {
@@ -109,16 +109,25 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
         string last_word=ladder.back();
         for(string word : word_list)
         {
-            if(is_adjacent(last_word,word)&&!visited[word])
+            if(!nonAdjacencies[last_word].contains(word))
             {
-                visited[word]=true;
-                vector<string> new_ladder=ladder;
-                new_ladder.push_back(word);
-                if(word==end_word)
-                    return new_ladder;
-                ladder_queue.push(new_ladder);
+                if(is_adjacent(last_word,word))
+                {
+                    if(!visited.contains(word))
+                    {
+                        visited.insert(word);
+                        vector<string> new_ladder=ladder;
+                        new_ladder.push_back(word);
+                        if(word==end_word)
+                            return new_ladder;
+                        ladder_queue.push(new_ladder);
+                    }
+                }
+                else
+                    nonAdjacencies[last_word].insert(word);
             }
         }
     }
+
     return {};
 }
