@@ -108,4 +108,20 @@ TEST(Dijkstras, Dijkstras)
   EXPECT_EQ(3,result[1]);
   EXPECT_EQ(6,result[2]);
   EXPECT_EQ(1,result[3]);
+  print_path(previous,5);
+}
+
+TEST(Dijkstras, Extract)
+{
+  Graph G;
+  vector<int> previous{0,0,0,0};
+  file_to_graph("src/small.txt", G);
+  vector<int> distances=dijkstra_shortest_path(G,0,previous);
+  vector<int> path=extract_shortest_path(distances,previous,2);
+  EXPECT_EQ(0,path[0]);
+  EXPECT_EQ(3,path[1]);
+  EXPECT_EQ(1,path[2]);
+  EXPECT_EQ(2,path[3]);
+  EXPECT_EQ(4,path.size());
+  
 }
