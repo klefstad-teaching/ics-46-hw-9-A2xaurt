@@ -93,13 +93,15 @@ bool is_adjacent(const string &word1, const string &word2)
 
 vector<string> generate_word_ladder(const string &begin_word, const string &end_word, const set<string> &word_list)
 {
-    //Currently does nothing to save time on the autograder so that I 
-    //can see if some other changes to another function improved it or not
-    /*
     queue<vector<string>> ladder_queue;
     ladder_queue.push({begin_word});
-    set<string> visited;
-    visited.insert(begin_word);
+
+
+    map<string,bool> visited;
+    for(string word:word_list)
+        visited[word]=false;
+    visited[begin_word]=true;
+
     while(!ladder_queue.empty())
     {
         vector<string> ladder=ladder_queue.front();
@@ -107,9 +109,9 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
         string last_word=ladder.back();
         for(string word : word_list)
         {
-            if(is_adjacent(last_word,word)&&!visited.contains(word))
+            if(is_adjacent(last_word,word)&&!visited[word])
             {
-                visited.insert(word);
+                visited[word]=true;
                 vector<string> new_ladder=ladder;
                 new_ladder.push_back(word);
                 if(word==end_word)
@@ -118,6 +120,5 @@ vector<string> generate_word_ladder(const string &begin_word, const string &end_
             }
         }
     }
-    */
     return {};
 }

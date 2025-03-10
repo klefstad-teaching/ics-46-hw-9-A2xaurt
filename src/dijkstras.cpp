@@ -8,9 +8,10 @@ void print_path(const vector<int> &v, int total)
     cout<<endl<<"Total cost is "<<total<<endl;
 }
 
-//A helper that takes in two pairs of integers and compares
+//A helper struct for the compare parameter of a priority queue
+// so that it takes in two pairs of integers and compares
 //their second value. This is useful for comparing the
-//weights of two edges
+//weights of two edges and helps in building a minimum heap
 struct CompareSecond
 {
     bool operator()(pair<int,int>& x,pair<int,int>& y)
