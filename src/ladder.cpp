@@ -80,6 +80,32 @@ bool edit_distance_within(const std::string &str1, const std::string &str2, int 
 {
     int size1=str1.size();
     int size2=str2.size();
+
+    //Check that the size differences are within 1 character
+    if(size1-size2>1||size2-size1>1)
+        return false;
+
+    //If the sizes are the same, just count the number of differing characters
+    if(size1==size2)
+    {
+        int differences=0;
+        for(int i=0; i<size1; ++i)
+        {
+            if(str1[i]!=str2[i])
+                ++differences;
+            if(differences>1)
+                return false;
+        }
+
+        return true;
+    }
+
+    //Check to see if both the first characters and last characters are both different
+    if(size1>1&&size2>1&&(str1[0]!=str2[0]&&str1[size1-1]!=str2[size2-1]))
+        return false;
+
+
+    //All other checks failed, calculate the Levenshtein distance
     int* previousDistances=new int[size2+1];
     int* currentDistances=new int[size2+1];
 
@@ -110,11 +136,6 @@ bool edit_distance_within(const std::string &str1, const std::string &str2, int 
 
 bool is_adjacent(const string &word1, const string &word2)
 {
-    int size1=word1.size();
-    int size2=word2.size();
-    if(size1-size2>1||size2-size1>1)
-        return false;
-
     return edit_distance_within(word1, word2, 1);
 }
 
