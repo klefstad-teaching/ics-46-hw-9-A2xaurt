@@ -1,7 +1,7 @@
 //ladder.cpp
 #include "ladder.h"
 #include "timer.h"
-#include <algorithm>
+#include <cmath>
 
 #define my_assert(e) {cout << #e << ((e) ? " passed": " failed") << endl;}
 //ladder Implementation
@@ -110,14 +110,19 @@ bool edit_distance_within(const std::string &str1, const std::string &str2, int 
 
 bool is_adjacent(const string &word1, const string &word2)
 {
+    int size1=word1.size();
+    int size2=word2.size();
+    if(size1-size2>1||size2-size1>1)
+        return false;
+
     return edit_distance_within(word1, word2, 1);
 }
 
 vector<string> generate_word_ladder(const string &begin_word, const string &end_word, const set<string> &word_list)
 {
     queue<vector<string>> ladder_queue;
-    ladder_queue.push({begin_word});
     set<string> visited;
+    ladder_queue.push({begin_word});
     visited.insert(begin_word);
 
     while(!ladder_queue.empty())
