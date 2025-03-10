@@ -1,6 +1,7 @@
 //ladder.cpp
 #include "ladder.h"
 #include "timer.h"
+#include <algorithm>
 
 #define my_assert(e) {cout << #e << ((e) ? " passed": " failed") << endl;}
 //ladder Implementation
@@ -81,28 +82,22 @@ bool edit_distance_within(const std::string &str1, const std::string &str2, int 
     int size2=str2.size();
     vector<vector<int>> distances(size1+1,vector<int>(size2+1,0));
 
-    //cout<<"First assignment!"<<endl;
     for(int i=1; i<=size1; ++i)
         distances[i][0]=i;
 
-    //cout<<"Second assignment!"<<endl;
-    for(int i=1; i<=size2; ++i)
-        distances[0][i]=i;
+    for(int j=1; j<=size2; ++j)
+        distances[0][j]=j;
 
-    //cout<<"Starting nest!"<<endl;
-    for(int i=1; i<=size1; ++i)
-        for(int a=1; a<=size2; ++a)
+    for(int j=1; j<=size2; ++j)
+        for(int i=1; i<=size1; ++i)
         {
             int substitutionCost=0;
-            //cout<<"Checking str1[i] and str2[a]!"<<endl;
-            if(str1[i]!=str2[a])
+            if(str1[i-1]!=str2[j-1])
                 ++substitutionCost;
-            //cout<<"Assigning distance!"<<endl;
-            distances[i][a]=min(distances[i-1][a]+1,min(distances[i][a-1]+1,distances[i-1][a-1]+substitutionCost));
+            distances[i][j]=min(distances[i-1][j]+1,min(distances[i][j-1]+1,distances[i-1][j-1]+substitutionCost));
         }
-
-    //cout<<"Attempting return!"<<endl;
-    return distances[size1-1][size2-1]<=d;
+    
+    return distances[size1][size2]<=d;
 
 }
 
