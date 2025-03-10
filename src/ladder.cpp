@@ -80,25 +80,32 @@ bool edit_distance_within(const std::string &str1, const std::string &str2, int 
 {
     int size1=str1.size();
     int size2=str2.size();
-    vector<vector<int>> distances(size1+1,vector<int>(size2+1,0));
+    int* previousDistances=new int[size2+1];
+    int* currentDistances=new int[size2+1];
 
-    for(int i=1; i<=size1; ++i)
-        distances[i][0]=i;
+    for(int i=0; i<=size2; ++i)
+        previousDistances[i]=i;
 
-    for(int j=1; j<=size2; ++j)
-        distances[0][j]=j;
-
-    for(int j=1; j<=size2; ++j)
-        for(int i=1; i<=size1; ++i)
+    for(int i=0; i<size1; ++i)
+    {
+        currentDistances[0]=i+1;
+        for(int a=0; a<size2; ++a)
         {
-            int substitutionCost=0;
-            if(str1[i-1]!=str2[j-1])
+            int deletionCost=previousDistances[a+1]+1;
+            int insertionCost=currentDistances[a]+1;
+            int substitutionCost=previousDistances[a];
+            if(str1[i]!=str2[a])
                 ++substitutionCost;
-            distances[i][j]=min(distances[i-1][j]+1,min(distances[i][j-1]+1,distances[i-1][j-1]+substitutionCost));
+            currentDistances[a+1]=min(deletionCost,min(insertionCost,substitutionCost));
         }
-    
-    return distances[size1][size2]<=d;
+        copy(currentDistances,currentDistances+size2+1,previousDistances);
 
+    }
+    
+    bool result=previousDistances[size2]<=d;
+    delete[] previousDistances;
+    delete[] currentDistances;
+    return result;
 }
 
 bool is_adjacent(const string &word1, const string &word2)
