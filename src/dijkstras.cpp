@@ -8,6 +8,17 @@ void print_path(const vector<int> &v, int total)
     cout<<endl<<"Total cost is "<<total<<endl;
 }
 
+//A helper that takes in two pairs of integers and compares
+//their second value. This is useful for comparing the
+//weights of two edges
+struct CompareSecond
+{
+    bool operator()(pair<int,int>& x,pair<int,int>& y)
+    {
+        return x.second>y.second;
+    }
+};
+
 vector<int> dijkstra_shortest_path(const Graph &G, int source, vector<int> &previous)
 {
     int numVertices=G.size();
@@ -15,7 +26,7 @@ vector<int> dijkstra_shortest_path(const Graph &G, int source, vector<int> &prev
     vector<bool> visited(numVertices,false);
     distances[source]=0;
     previous[source]=UNDEFINED;
-    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> minHeap;
+    priority_queue<pair<int,int>,vector<pair<int,int>>,CompareSecond> minHeap;
     minHeap.push({source,0});
     while(!minHeap.empty())
     {
