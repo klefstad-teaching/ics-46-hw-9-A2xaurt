@@ -1,6 +1,6 @@
 CXXFLAGS=-ggdb -std=c++20 -Wall -Wextra -Werror -Wfatal-errors -pedantic
 main: 
-	g++ $(CXXFLAGS) src/dijkstras_main.cpp src/dijkstras.cpp src/ladder_main.cpp src/ladder.cpp -o main
+	g++ $(CXXFLAGS) src/ladder_main.cpp src/ladder.cpp -o main
 clean:
 	/bin/rm main
 output:

@@ -3,8 +3,9 @@
 
 int main()
 {
-    //verify_word_ladder();
+    verify_word_ladder();
 
+    /*
     string start{};
     string target{};
     cout<<"Enter start word: ";
@@ -22,5 +23,5 @@ int main()
         else
             print_word_ladder(generate_word_ladder(start,target,words));
     }
-    
+    */
 }
